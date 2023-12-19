@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Calculator</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #2d2d2d;
+    height: 35rem;
+    
+  }
+
+  .container {
+    background: black;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20rem;
+    justify-content: center;
+  }
+
+  .calculator {
+    margin: 2rem 0 0;
+
+  }
+
+  #btn {
+    width: 3rem;
+    border: 2px solid #2d2d2d;
+    background: #2d2d2d;
+    border-radius: 50%;
+    font-size: 22px;
+    margin: 5px;
+    padding: 8px;
+    cursor: pointer;
+    color: white;
+  }
+
+  #screen {
+    text-align: right;
+    color: white;
+    background-color: #2d2d2d;
+    font-size: 18px;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    width: 15rem;
+    outline: none;
+    margin: 1rem 0 0;
+  }
+
+  #btn-orange {
+    background-color: rgb(255, 166, 0);
+    width: 3rem;
+    border: rgb(255, 166, 0);
+    border-radius: 50%;
+    font-size: 22px;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+  }
+
+  .row-5 {
+    margin-bottom: 2rem;
+  }
+
+  button[type = submit]:hover{
+    opacity: 0.8;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="calculator">
+      <h1>Calculator</h1>
+    </div>
+    <div class="input"><input type="text" id="screen"></div><br>
+    <div class="table">
+      <div class="row-1">
+        <tr>
+
+          <button type="submit" id="btn-orange">AC</button>
+          <button type="submit" id="btn-orange">(</button>
+          <button type="submit" id="btn-orange">)</button>
+          <button type="submit" id="btn-orange">X</button>
+
+        </tr>
+      </div>
+
+      <div class="row-2">
+        <tr><button type="submit" id="btn">7</button>
+          <button type="submit" id="btn">8</button>
+          <button type="submit" id="btn">9</button>
+          <button type="submit" id="btn-orange">-</button>
+        </tr>
+      </div>
+
+
+      <div class="row-3">
+        <tr><button type="submit" id="btn">4</button>
+          <button type="submit" id="btn">5</button>
+          <button type="submit" id="btn">6</button>
+          <button type="submit" id="btn-orange">+</button>
+
+        </tr>
+      </div>
+
+      <div class="row-4">
+        <tr><button type="submit" id="btn">1</button>
+          <button type="submit" id="btn">2</button>
+          <button type="submit" id="btn">3</button>
+          <button type="submit" id="btn-orange">*</button>
+        </tr>
+      </div>
+
+      <div class="row-5">
+        <tr><button type="submit" id="btn">0</button>
+          <button type="submit" id="btn">.</button>
+          <button type="submit" id="btn">/</button>
+          <button type="submit" id="btn-orange">=</button>
+        </tr>
+      </div>
+
+
+      </tr>
+    </div>
+  </div>
+</body>
+<script>
+
+  let screen = document.getElementById("screen");
+  let buttons = document.querySelectorAll("button");
+  let screenValue = "";
+
+  for (item of buttons) {
+    item.addEventListener("click", (e) => {
+      buttonValue = e.target.innerText;
+
+      if (buttonValue == '*') {
+        screenValue += '*';
+        screen.value = screenValue;
+      }
+
+      else if (buttonValue == 'AC') {
+        screenValue = ""
+        screen.value = screenValue;
+        screen.value = '';
+      }
+
+      else if (buttonValue == '=') {
+        screen.value = eval(screenValue);
+      }
+
+      else if(buttonValue == "X"){
+        screen.value = "It doesn't work!";
+      }
+
+      else {
+        screenValue += buttonValue;
+        screen.value = screenValue;
+      }
+    })
+  }
+
+</script>
+
+</html>
